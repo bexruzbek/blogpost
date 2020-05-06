@@ -1,0 +1,57 @@
+<h1>Добавить новый пост</h1>
+<form action="/add" method="POST" class="needs-validation" novalidate>
+  <div class="form-group">
+    <label for="title">Названия поста:</label>
+    <input type="text" name="title" class="form-control validate" id="title" required>
+    <div class="invalid-feedback">Вы должны запольнить это полья.</div>
+  </div>
+  <div class="form-group">
+    <label for="img">Img URL:</label>
+    <input type="text" name="img" class="form-control validate" id="img" required>
+    <div class="invalid-feedback">Вы должны запольнить это полья.</div>
+  </div>
+  <div class="form-group">
+    <label for="category">Выберите категорию блога</label>
+    <select class="form-control" id="category" name="category" required>
+      <option value="IT Hi-tech">IT Hi-tech</option>
+      <option value="Политика">Политика</option>
+      <option value="Спорт">Спорт</option>
+      <option value="Образование">Образование</option>
+      <option value="Beauty">Beauty</option>
+      <option value="Заработок в Интернете">Заработок в Интернете</option>
+      <option value="Кино">Кино</option>
+      <option value="Музыка">Музыка</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="posttext">Введите ваш текст</label>
+    <textarea class="form-control validate" id="posttext" name="posttext" rows="10" required></textarea>
+    <div class="invalid-feedback">Вы должны запольнить это полья.</div>
+  </div>
+
+  <input type="hidden" name="authorId" value="{{author._id}}">
+  <input type="hidden" name="_csrf" value="{{csrf}}">
+  <center><button type="submit" class="btn btn-primary">Отправить</button></center>
+</form>
+
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

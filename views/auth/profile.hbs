@@ -1,0 +1,18 @@
+<div class="row mt-5">
+    <div class="col-6 offset-3">
+        <div class="card" style="width:400px">
+        <img class="card-img-top" src="/img/avatar.png" alt="Card image">
+        <div class="card-body">
+            <ul class="list-group">
+                <li class="list-group-item"><p class="card-text profile-items">Имя: <span class="profile-item">{{user.name}}</span></p></li>
+                <li class="list-group-item"><p class="card-text profile-items">Email: <span class="profile-item">{{user.email}}</span></p></li>
+                <li class="list-group-item"><p class="card-text profile-items">Страна: <span class="profile-item">{{user.country}}</span></p></li>
+                <li class="list-group-item"><p class="card-text profile-items">Посты: <em class="profile-item">{{user.posts.items.count}}</em></p></li>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <center><a type="button" class="btn btn-primary" href="/profile/posts/{{user._id}}">Смотреть все посты</a></center>
+        </div>
+        </div>
+    </div>
+</div>

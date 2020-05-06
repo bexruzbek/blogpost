@@ -1,0 +1,69 @@
+.mforl{
+    margin-top: 1rem !important;
+    margin-left: 1rem !important;
+}
+
+.postimg{
+    height: 150px;
+}
+
+.card-body .card-post {
+    position: relative;
+    display: inline-block;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 4.6em; /* (Number of lines you want visible) * (line-height) */
+    line-height: 1.2em;
+    text-align:justify;
+}
+
+.my-warning{
+    background-color: rgb(255,255,204) !important;
+}
+
+.profile-items{
+    font-weight: bold;
+}
+
+.profile-item{
+    font-weight: normal;
+}
+
+.bg-postinfo{
+    background-color: rgb(241,241,241);
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+figure {
+    width: 100%; /* Ширина */
+    float: left; /* Выстраиваем элементы по горизонтали */
+    margin: 0 0 0 3.5%; /* Отступ слева */
+    background: #f0f0f0; /* Цвет фона */
+    border-radius: 5px; /* Радиус скругления */
+    padding: 2%; /* Поля */
+   }
+
+figure:first-child {
+    margin-left: 0; /* Убираем отступ для первого элемента */   
+}
+
+.home-posts{
+    width: 100%;
+    height: 11rem;
+}
+
+.home-posts img{
+    width: 100%;
+    height: 11rem;
+}
+
+.card-body h5{
+    width: 100%;
+    height: 78px;
+    font-size: 16px;
+    overflow: hidden;
+}

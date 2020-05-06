@@ -1,0 +1,99 @@
+            <div id="demo" class="carousel slide mt-3" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img src="/img/slide3.jpg" alt="Blogpost">
+                </div>
+                <div class="carousel-item">
+                <img src="/img/slide2.jpg" alt="Blogpost">
+                </div>
+                <div class="carousel-item">
+                <img src="/img/slide1.png" alt="Blogpost">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+            </div>
+
+
+<div class="container mt-3">
+  <center><h2>Читайте самые топовые блоги</h2></center>
+  <br>
+  <!-- Nav tabs -->
+  <center><ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Самые свежые</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Самые попульярные</a>
+    </li>
+  </ul></center>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+    <h3>Самые новые посты</h3>
+        {{#if posts.length}}
+            <div class="row">
+            {{#each posts}}
+                <div class="col-md-4 mb-2">
+                    <div class="card">
+                        <div class="home-posts"><figure>
+                        <img class="card-img-top" src="{{img}}" alt="{{title}}">
+                        </figure></div>
+                        <div class="card-body ellipsis">
+                            <h5 class="card-title">{{title}}</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/posts/{{id}}" class="btn btn-primary">Читать</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        {{else}}
+            <p>Пока ничего не добавлено</p>
+        {{/if}}
+    </div>    
+    
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h3>Самые новые посты</h3>
+        {{#if popular.length}}
+            <div class="row">
+            {{#each popular}}
+                <div class="col-md-4 mb-2">
+                    <div class="card">
+                        <div class="home-posts"><figure>
+                        <img class="card-img-top" src="{{img}}" alt="{{title}}">
+                        </figure></div>
+                        <div class="card-body home-post-body ellipsis">
+                            <h5 class="card-title">{{title}}</h5>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/posts/{{id}}" class="btn btn-primary">Читать</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        {{else}}
+            <p>No blogs added yet</p>
+        {{/if}}
+    </div>
+    </div>
+</div>

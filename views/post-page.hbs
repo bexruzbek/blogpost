@@ -1,0 +1,61 @@
+<h1 class="mt-3">{{post.title}}</h1>
+<div class="d-flex p-1 bg-postinfo mb-2">
+  <div class="p-1">Опубликован: {{post.date}}</div>
+  <div class="p-1">Просмотры: {{post.visits}}</div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <center><div class="postpage-img" style="max-width: 40%;">
+            <img src="{{post.img}}" class="mx-auto d-block img-thumbnail" alt="{{post.title}}" style="max-width: 100%;">
+        </div></center>
+    </div>
+</div>
+
+
+<p class="mt-4 mb-3">{{post.posttext}}</p>
+
+<div class="d-flex p-1 bg-postinfo mb-2">
+  <div class="p-1">Автор: {{post.author.name}}</div>
+</div>
+
+{{#if isAuth}}
+<div class="col-12 mt-5">
+    <form action="/posts/{{post._id}}/comment" method="POST">
+        <div class="form-group">
+            <label for="comment">Введите свой комментерий</label>
+            <textarea class="form-control validate" id="comment" name="comment" rows="6" required></textarea>
+            <div class="invalid-feedback">Вы не ввели ничего</div>
+        </div>
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+        <input type="hidden" name="postId" value="{{post._id}}">
+        <center><button class="btn btn-primary">Отправить</button></center>
+    </form>
+</div>
+{{else}}
+<div class="row mt-5 mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body my-warning">
+                <center>
+                <p>Что бы добавлять комментарии к этому записю вы должны быть <a href="/auth">авторизованным</a> на сайте.</p>
+                <p>Если у вас еще нету аккаунта, то <a href="/auth/registration">зарегистрируйтесь</a> на сайте.</p>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+{{#if comments.length}}
+    {{#each comments}}
+    <div class="media border p-3 mt-5">
+        <img src="/img/comment.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+        <div class="media-body">
+            <h4>{{commentator.name}} <small><i>Опубликован: {{date}}</i></small></h4>
+            <p>{{comment}}</p>
+        </div>
+    </div>
+    {{/each}}
+{{else}}
+<p>Пока нету комментарии к этому запису. Будьте первым</p>
+{{/if}}

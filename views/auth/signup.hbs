@@ -1,0 +1,81 @@
+<div class="row mt-2">
+    <div class="col-6 offset-3">
+        <div class="card">
+            <form action="/auth/registration" method="POST" class="needs-validation" novalidate>
+            
+            {{#if regError}}
+              <center><div class="alert alert-danger">{{regError}}</div></center>
+            {{/if}}
+
+            <div class="card-header"><center><h2>Регистрация</h2></center></div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="email">Email адрес:</label>
+                    <input type="email" class="form-control" name="email" placeholder="Введите email" id="email" required>
+                    <div class="invalid-feedback">Введите email</div>
+                </div>
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Введите имя" id="name" required>
+                    <div class="invalid-feedback">Введите имя</div>
+                </div>
+                <div class="form-group">
+                    <label for="country">Выберите Страну</label>
+                    <select class="form-control" id="country" name="country" required>
+                    <option value="Узбекистан">Узбекистан</option>
+                    <option value="Россия">Россия</option>
+                    <option value="Казакстан">Казакстан</option>
+                    <option value="Украина">Украина</option>
+                    <option value="Киргизстан">Киргизстан</option>
+                    <option value="Таджикистан">Таджикистан</option>
+                    <option value="Беларусь">Беларусь</option>
+                    <option value="Туркменистан">Туркменистан</option>
+                    <option value="Другая">Другая</option>
+                    </select>
+                    <div class="invalid-feedback">Выберите страну</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" class="form-control" name="password" placeholder="Введите пароль" id="password" required>
+                    <div class="invalid-feedback">Введите пароль</div>
+                </div>
+                <div class="form-group">
+                    <label for="rpassword">Подтвердите пароль:</label>
+                    <input type="password" class="form-control" name="rpassword" placeholder="Подтвердите пароль" id="rpassword" required>
+                    <div class="invalid-feedback">Введите пароль еще раз</div>
+                </div>
+                <div class="form-group form-check">
+                    <center><label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" required> Соглаcен с <a href="/conditions">условиями использование</a>
+                    <div class="invalid-feedback">Надо прочитать условия и согласиться</div>
+                    </label></center>
+                </div>
+            </div>
+            <input type="hidden" name="_csrf" value="{{csrf}}">
+            <div class="card-footer"><center><button type="submit" class="btn btn-primary">Зарегистрироваться</button></center></div>
+            </form>
+        </div> 
+    </div>
+</div>
+
+
+<script>
+// Disable form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Get the forms we want to add validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

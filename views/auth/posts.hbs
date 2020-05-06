@@ -1,0 +1,39 @@
+<ul class="list-group mt-3">
+    <li class="list-group-item"><p class="card-text profile-items">Все посты пользователья: <span class="profile-item">{{author.name}}</span></p></li>
+    <li class="list-group-item"><p class="card-text profile-items">Посмотреть аккаунт: <a type="button" class="btn btn-primary" href="/profile/{{author._id}}">{{author.name}}</a></p></li>
+</ul>
+
+<h3> </h3>
+<h3> </h3>
+
+{{#if posts.length}}
+    <div class="row">
+        {{#each posts}}
+        <div class="col-md-6">
+            <div class="card mb-3" style="max-width: 500px;">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="{{img}}" class="card-img postimg" alt="{{title}}">
+                        <p class="card-text mforl"><small class="text-muted">Пост добавлен: {{date}}</small></p>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body ellipsis">
+                            <h5 class="card-title">{{title}}</h5>
+                            <p class="card-text card-post">{{posttext}}</p><p>...</p>
+                        </div>    
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a type="btn" href="/posts/{{id}}" class="btn btn-primary">Read more</a>
+                    {{#if @root.isAuth}}
+                    <a type="btn" href="/posts/{{id}}/edit?allow=true" class="btn btn-success">Edit</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    
+{{else}}
+    <p>No blogs added yet</p>
+{{/if}}

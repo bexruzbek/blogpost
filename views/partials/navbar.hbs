@@ -1,0 +1,91 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" href="/">
+    <img src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+    Blogpost
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {{#if isAuth}}
+        {{#if isAdd}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/add">Добавить пость</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/add">Добавить пость</a>
+        </li>
+        {{/if}}
+      {{else}}
+        {{#if isAdd}}
+        <li class="nav-item active">
+          <a class="nav-link" href="/must-reg">Добавить пость</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/must-reg">Добавить пость</a>
+        </li>
+        {{/if}}
+      {{/if}}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Категории
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/category/it-hitech">IT & Hi-Tech</a>
+          <a class="dropdown-item" href="/category/politics">Политика</a>
+          <a class="dropdown-item" href="/category/music">Музыка</a>
+          <a class="dropdown-item" href="/category/earn-money-inet">Заработок</a>
+          <a class="dropdown-item" href="/category/beauty">Beauty</a>
+          <a class="dropdown-item" href="/category/education">Образование</a>
+          <a class="dropdown-item" href="/category/sport">Спорт</a>
+          <a class="dropdown-item" href="/category/cinema">Кино</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/posts">Все посты</a>
+        </div>
+      </li>
+
+      {{#if isAbout}}
+        <li class="nav-item active">
+            <a class="nav-link" href="/about">Инфо</a>
+        </li>
+      {{else}}
+        <li class="nav-item">
+            <a class="nav-link" href="/about">Инфо</a>
+        </li>
+      {{/if}}
+
+      {{#if isAuth}}
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{userName}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profile/{{userId}}">Аккаунт</a>
+          <a class="dropdown-item" href="/profile/posts/{{userId}}">Посты</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/auth/logout">Выйти</a>
+        </div>
+        </li>
+      {{else}}
+        {{#if isLogin}}
+        <li class="nav-item active">
+            <a class="nav-link" href="/auth">Войти</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+            <a class="nav-link" href="/auth">Войти</a>
+        </li>
+        {{/if}}
+      {{/if}}
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>

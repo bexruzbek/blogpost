@@ -1,0 +1,46 @@
+<h1>{{category}}</h1>
+
+{{#if posts.length}}
+    <div class="row">
+        {{#each posts}}
+        <div class="col-md-6">
+            <div class="card mb-3" style="max-width: 500px;">
+                <div class="row no-gutters">
+                    <div class="col-md-5">
+                        <img src="{{img}}" class="card-img postimg" alt="{{title}}">
+                        <p class="card-text mforl"><small class="text-muted">Автор: <a href="/profile/posts/{{author._id}}">{{author.name}}</a></small></p>
+                        <p class="card-text mforl"><small class="text-muted">Пост добавлен: {{date}}</small></p>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body ellipsis">
+                            <h5 class="card-title">{{title}}</h5>
+                            <p class="card-text card-post">{{posttext}}</p><p>...</p>
+                        </div>    
+                    </div>
+                </div>
+                
+                <div class="card-footer">
+                    <div class="d-inline-flex">
+                    <div class="ml-1"><a type="btn" href="/posts/{{id}}" class="btn btn-primary">Читать</a></div>
+                    {{#if @root.isAuth}}
+
+                        {{#ifeq author._id @root.userId}}
+                            <div class="ml-1"><a type="btn" href="/posts/{{id}}/edit?allow=true" class="btn btn-success">Изменить</a></div>
+                            <div class="ml-1">
+                                <form action="/posts/{{id}}/delete" method="post">
+                                <input type="hidden" name="_csrf" value="{{@root.csrf}}">
+                                <button type="submit" class="btn btn-danger">Удалить</button>
+                                </form>
+                            </div>
+                        {{/ifeq}}     
+                    {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    
+{{else}}
+    <p>No blogs added yet</p>
+{{/if}}
